@@ -115,4 +115,85 @@ void explainQuene(){
 }
 void explainPQ(){
     priority_quene<int>pq;
+    pq.push(5);//{5}
+    pq.push(2);//{5,2}
+    pq.push(8);//{8,5,2}
+    pq.emplace(10);//{10,8,5,2}
+    cout<<pq.top();//print 10
+    pq.pop();//{8,5,2}
+    cout<<pq.top()<<" ";//print 8
+    //size swap empty are same
+     
+     //minimum heap
+     priority_quene<int,vector<int>,greater<int>>pq;
+     pq.push(5);//{5}
+     pq.push(2);//{2,5}
+     pq.push(8);//{2,5,8}
+     pq.emplace(10);//{2,5,8,10}
+     cout<<pq.top()<<" ";//print 2
+
+
 }
+void explainSet(){
+  //Set is orederd,unique
+  set<int>st;
+  st.insert(1);//{1}
+  st.emplace(2);//{1,2}
+  st.insert(2);//{1,2}
+  st.insert(4);//{1,2,4}
+  st.insert(3);//{1,2,3,4}
+//swap,begin(),end(),empty all function same as vector
+//{1,2,3,4}
+  auto it = st.find(3);
+  auto it = st.find(6);
+  st.erase(4);//{1,2,3}
+  int cnt = st.count(1);
+  auto it = st.find(3);
+  st.erase(it);
+  //{1,2,3,4,5}
+  auto it1 = st.find(2);
+  auto it2 = st.find(4);
+  st.erase(it1,it2);//{1,4,5}
+  auto it = st.lower_bound(2);
+  auto it = st.upper_bound(3);
+
+
+}
+void explainMultiSet(){
+  //order,duplicate
+  multiset<int>ms;
+  ms.insert(1);//{1}
+  ms.insert(1);//{1,1}
+  ms.insert(1);//{1,1,1}
+  ms.earse(1);//all 1's earsed
+  int cn = ms.count(1);
+  ms.earse(ms.find(1));//only one 1 earsed 
+  ms.earse(ms.find(1),ms.find(1)+2);
+  //all the function same as set
+
+
+}
+
+void expainUset(){
+  uniqueset<int>uq;
+  //unique, but disorderd
+  //all function works except upper bound and lower bound
+
+}
+void explainMap(){
+//key has been unique and sorted order
+//value maybe duplicate
+//map<key,value>
+
+  map<int,int>mpp;
+  map <pair<int,int>,int>mpp;
+  mpp[1] = 2;//{1,2}
+  mpp.emplace{{3,1}};//{{1,2},{3,1}}
+  mpp.insert{{2,4}};//{{1,2}{2,4}{3,1}}
+  for(auto it :mpp){
+    cout<<it.first<<" "<<it.second<<endl;
+  }
+  //
+}
+
+
