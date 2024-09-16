@@ -1,42 +1,37 @@
 #include<iostream>
 using namespace std;
 struct node{
-    int v;
-    node * next;
-
+    char c;
+    node*next;
 };
-class Linkedlist{
-    node*start;
+class linkedlist2{
+    node*start,*end;
     public:
-    Linkedlist(){start=NULL;}
-    void addatbegin(int x){
+    linkedlist2(){start=end=NULL;}
+    void addatbegin(char x){
         node *t;
         t=new node;
-        t->v=x;
+        t->c=x;
         t->next=NULL;
-        if(start==NULL){start=t;}
+        if(start==NULL){
+            start=t;
+            end=t;
+        }
         else{
             t->next=start;
-            start = t;
+            start=t;
         }
     }
-    void display(){
-        node*temp;
-        temp=start;
-        while (temp!=NULL){
-            cout<<temp->v<<" ";
-            temp=temp->next;
+    void append(char x){
+        node*t=new node;
+        t->c=x;t->next=NULL;
+        if(start == NULL){
+            start =t;
+            end=t;
         }
-        
-        
+        else{
+            end->next=t;
+            end=t;
+        }
     }
-
 };
-int main(){
-    Linkedlist l;
-    l.addatbegin(10);
-    l.addatbegin(15);
-    l.display();
-    l.addatbegin(30);
-    l.display();
-}

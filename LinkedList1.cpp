@@ -57,7 +57,7 @@ class linkedlist{
         node*t=new node;
         t->v=x;
         t->next=NULL;
-        if(POS<=1){addatbegin(x);return;}
+        if(POS<1){addatbegin(x);return;}
         if(POS+1>getLength()){cout<<"ERROR ";return;}
         node*temp=start;
         for(int i=1;i<POS;i++)temp = temp->next;
@@ -96,13 +96,15 @@ class linkedlist{
         int n = getLength();
         if (POS==n)return removelast();
         node*temp=start;
-        for(int i=0;i<POS;i++){
+        for(int i=1;i<POS-1;i++){
             temp = temp->next;
 
         }
         int c = temp->next->v;
-        node*t = temp->next->next;
-        delete t;
+        node*t = temp->next;
+        node*temp1=temp->next;
+        temp->next=temp->next->next;
+        delete temp1;
         return c;
 
     }
@@ -112,8 +114,9 @@ int main(){
     linkedlist l;
     l.addatbegin(10);
     l.addatbegin(15);
-    l.display();
+    // l.display();
     l.addatbegin(30);
+    l.addatPOS(3,0);
     l.display();
     l.append(20);
     l.display();
@@ -123,8 +126,9 @@ int main(){
     cout<<l.removefirst()<<endl;
     l.display();
     cout<<l.removelast()<<endl;
-    l.display();
-    cout<<l.removeNTH(1)<<endl;
+    l.display(); 
+    cout<<"afer nth"<<endl;
+    cout<<l.removeNTH(2)<<endl;
     l.display();
 
 }
